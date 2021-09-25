@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ffi_examples"
+version = "0.1.0"
+description = ""
+authors = ["Michael Sundvick <michsund@outlook.co.nz>"]
+build = "build.py"
+
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.10"
+numpy = "^1.21.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+Cython = "^0.29.24"
+setuptools-rust = "^0.12.1"
+nimporter = "^1.0.4"
+black = {version = "^21.9b0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

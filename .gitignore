@@ -1,0 +1,9 @@
+/target
+nim-extensions
+/build
+__pycache__
+*.pyd
+*_cy.c
+*.egg-info
+MANIFEST.in
+/dist
