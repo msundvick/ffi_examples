@@ -13,11 +13,12 @@ logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
 
 def build(setup_kwargs):
     logging.info("Before: %s", setup_kwargs)
+    name = setup_kwargs['packages'][0]
 
-    cython_extensions: List[str] = ["pythoninteropexamples/cython_cy.pyx"]
+    cython_extensions: List[str] = [f"{name}/cython_cy.pyx"]
     extensions: List[Extension] = [
-        # "pythoninteropexamples/c_example.c",
-        # "pythoninteropexamples/cpp_example.cpp",
+        # f"{name}/c_example.c",
+        # f"{name}/cpp_example.cpp",
     ]
 
     # Build
@@ -32,7 +33,7 @@ def build(setup_kwargs):
             + nimporter.build_nim_extensions(),
             "rust_extensions": [
                 RustExtension(
-                    "ffi_examples.rust",
+                    f"{name}/rust",
                     path="Cargo.toml",
                     binding=Binding.PyO3,
                     debug=False,
