@@ -16,6 +16,8 @@ Cython = "^0.29.24"
 setuptools-rust = "^0.12.1"
 nimporter = "^1.0.4"
 black = {version = "^21.9b0", allow-prereleases = true}
+pytest-profiling = "^1.7.0"
+snakeviz = "^2.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
