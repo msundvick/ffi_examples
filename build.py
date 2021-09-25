@@ -1,10 +1,12 @@
 import logging
 import os
-from typing import List
+from typing import List, Union
 
 import nimporter
 import numpy
 from Cython.Build import cythonize
+from pybind11 import get_cmake_dir
+from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import Extension
 from setuptools_rust import Binding, RustExtension
 
@@ -13,20 +15,29 @@ logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
 
 def build(setup_kwargs):
     logging.info("Before: %s", setup_kwargs)
-    name = setup_kwargs['packages'][0]
+    name = setup_kwargs["packages"][0]
 
-    cython_extensions: List[str] = [f"{name}/cython_cy.pyx"]
-    extensions: List[Extension] = [
-        # f"{name}/c_example.c",
-        # f"{name}/cpp_example.cpp",
+    extensions: List[Union[Extension, Pybind11Extension]] = [
+        Extension(
+            f"{name}.c_example",
+            [f"{name}/c/example.c"],
+            language="c",
+            py_limited_api=True,
+            define_macros=[("Py_LIMITED_API", None)],
+        ),
+        Pybind11Extension(
+            f"{name}.pybind_example",
+            [f"{name}/cpp/cpp_example.cpp"],
+        )
     ]
 
     # Build
     setup_kwargs.update(
         {
             "ext_modules": cythonize(
-                cython_extensions,
+                f"{name}/**/*.pyx",
                 language_level=3,
+                annotate=True,
                 compiler_directives={"linetrace": True},
             )
             + extensions

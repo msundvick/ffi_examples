@@ -3,5 +3,9 @@
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.diagnostics.disabled": [
         "unresolved-macro-call"
-    ]
+    ],
+    "files.associations": {
+        ".gitconfig": "ini",
+        "halffloat.h": "c"
+    }
 }

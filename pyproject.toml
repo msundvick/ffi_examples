@@ -18,7 +18,8 @@ nimporter = "^1.0.4"
 black = {version = "^21.9b0", allow-prereleases = true}
 pytest-profiling = "^1.7.0"
 snakeviz = "^2.1.0"
+pybind11 = "^2.7.1"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.0.0", "Cython", "setuptools-rust", "nimporter", "pybind11"]
 build-backend = "poetry.core.masonry.api"
