@@ -36,7 +36,7 @@ def build(setup_kwargs):
     setup_kwargs.update(
         {
             "ext_modules": cythonize(
-                f"{name}/**/*.pyx",
+                f"{name}/**/*_cy.py",
                 language_level=3,
                 annotate=True,
                 compiler_directives={"linetrace": True},
