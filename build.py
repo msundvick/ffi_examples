@@ -1,6 +1,7 @@
 import logging
 import os
 from typing import List, Union
+import json
 
 import nimporter
 import numpy
@@ -57,3 +58,13 @@ def build(setup_kwargs):
     )
 
     logging.info("After: %s", setup_kwargs)
+
+
+    with open("juliacalldeps.json", "r") as f:
+        jl = json.load(f)
+
+    jl["packages"]["FfiExamples"]["path"] = os.getcwd()
+    with open("juliacalldeps.json", "w") as f:
+        json.dump(jl, f)
+
+    import juliacall
