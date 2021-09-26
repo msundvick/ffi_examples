@@ -1,7 +1,7 @@
 import nimporter  # Needed for importing nim files
 
 from .cython import run as cy
-from .nim import run as nim
+from .nim_example import run as nim
 from .python import run as py
 from .rust import run as rs
 from .c_example import run as c

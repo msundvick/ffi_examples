@@ -1,7 +1,9 @@
+import json
 import logging
 import os
+import shutil
+from pathlib import Path
 from typing import List, Union
-import json
 
 import nimporter
 import numpy
@@ -15,6 +17,11 @@ logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
 
 
 def build(setup_kwargs):
+
+    logging.info("Deleting nim files")
+    Path("./MANIFEST.in").unlink(missing_ok=True)
+    shutil.rmtree("./nim-extensions")
+
     logging.info("Before: %s", setup_kwargs)
     name = setup_kwargs["packages"][0]
 
