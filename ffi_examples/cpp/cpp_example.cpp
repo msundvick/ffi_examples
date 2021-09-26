@@ -1,4 +1,5 @@
 #include <pybind11/pybind11.h>
+#include <iostream>
 
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
@@ -36,12 +37,20 @@ PYBIND11_MODULE(pybind_example, m)
     )pbdoc");
 
     m.def(
-        "run", [](){return "C++";},
+        "run", []()
+        {
+            double a = 0;
+            int i;
+            for (i = 0; i < 1000000; i++)
+            {
+                a += i % 2 - 0.5;
+            }
+            std::cout << a;
+            return "C++";
+        },
         R"pbdoc(
             Basic function
-        )pbdoc"
-    );
-
+        )pbdoc");
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

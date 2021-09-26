@@ -3,7 +3,12 @@ use pyo3::wrap_pyfunction;
  
 #[pyfunction]
 fn run() -> &'static str {
-    println!("Rust");
+    let mut a: f64 = 0.0;
+    for i in 0..1_000_000 {
+        a += (i % 2) as f64 - 0.5
+    }
+
+    println!("{}", a.to_string());
     "Rust"
 }
  

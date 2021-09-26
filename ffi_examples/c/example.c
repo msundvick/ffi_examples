@@ -1,8 +1,16 @@
-
+#include <stdio.h>
 #include <Python.h>
 
 static PyObject *_run(PyObject *self)
 {
+    double a = 0;
+    int i;
+    for (i = 0; i < 1000000; i++)
+    {
+        a += i % 2 - 0.5;
+    }
+    printf("%f\n", a);
+
     return PyUnicode_FromString("C");
 }
 
