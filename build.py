@@ -36,7 +36,7 @@ def build(setup_kwargs):
         Pybind11Extension(
             f"{name}.pybind_example",
             [f"{name}/cpp/cpp_example.cpp"],
-        )
+        ),
     ]
 
     # Build
@@ -66,11 +66,10 @@ def build(setup_kwargs):
 
     logging.info("After: %s", setup_kwargs)
 
-
     with open("juliacalldeps.json", "r") as f:
         jl = json.load(f)
 
-    jl["packages"]["FfiExamples"]["path"] = os.getcwd()
+    jl["packages"]["FfiExamples"]["path"] = os.getcwd() + "/ffi_examples/FfiExamples"
     with open("juliacalldeps.json", "w") as f:
         json.dump(jl, f)
 
