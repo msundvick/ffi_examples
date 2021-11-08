@@ -9,18 +9,13 @@ build = "build.py"
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
 numpy = "^1.21.2"
-juliacall = {git = "https://github.com/cjdoris/PythonCall.jl"}
+juliacall = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-Cython = "^0.29.24"
-setuptools-rust = "^0.12.1"
-nimporter = "^1.0.4"
-black = {version = "^21.9b0", allow-prereleases = true}
 pytest-profiling = "^1.7.0"
 snakeviz = "^2.1.0"
-pybind11 = "^2.7.1"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "Cython", "setuptools-rust", "nimporter", "pybind11"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
