@@ -3,13 +3,11 @@ name = "ffi_examples"
 version = "0.1.0"
 description = ""
 authors = ["Michael Sundvick <michsund@outlook.co.nz>"]
-build = "build.py"
-
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
 numpy = "^1.21.2"
-juliacall = "^0.4.3"
+juliacall = { git = "https://github.com/cjdoris/PythonCall.jl" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
